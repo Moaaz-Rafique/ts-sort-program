@@ -2,6 +2,7 @@ import NumberList from './models/NumberList';
 import FileUtils from './utils/FileUtils';
 import QuickSort from './sorting/QuickSort';
 import yargs from 'yargs';
+import MergeSort from './sorting/MergeSort';
 
 const argv = yargs(process.argv.slice(2))
   .option('input', {
@@ -35,6 +36,7 @@ const argv = yargs(process.argv.slice(2))
     output: string;
     order: string;
     algorithm: string;
+    delimiter: string
   };
 
 
@@ -44,13 +46,20 @@ function main(): void {
   const outputFilePath = argv.output;
 
   // Read numbers from input file
-  const numbers = FileUtils.readNumbersFromFile(inputFilePath);
+  const numbers = FileUtils.readNumbersFromFile(inputFilePath, argv.delimiter);
 
   // Create NumberList instance
   const numberList = new NumberList(numbers);
 
   // Sort numbers using QuickSort
-  const sortingAlgorithm = new QuickSort();
+  let sortingAlgorithm;
+  switch (argv.algorithm) {
+    case 'mergesort':
+      sortingAlgorithm = new MergeSort(argv.order)
+      break;
+    default:
+      sortingAlgorithm = new QuickSort(argv.order)
+  }
   const sortedNumbers = sortingAlgorithm.sort(numberList.getNumbers());
 
   // Write sorted numbers to output file

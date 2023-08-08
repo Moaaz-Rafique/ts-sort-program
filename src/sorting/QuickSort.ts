@@ -1,6 +1,9 @@
 import SortingAlgorithm from './SortingAlgorithm';
 
 class QuickSort extends SortingAlgorithm {
+  constructor(order: string){
+    super(order)
+  }
   sort(numbers: number[]): number[] {
     this.quickSort(numbers, 0, numbers.length - 1);
     return numbers;
@@ -13,13 +16,15 @@ class QuickSort extends SortingAlgorithm {
       this.quickSort(numbers, partitionIndex + 1, high);
     }
   }
-
+  private compare(a: number, b: number): boolean {
+    return this.order === 'descending' ? a >= b : a <= b;
+  }
   private partition(numbers: number[], low: number, high: number): number {
     const pivot = numbers[high];
     let i = low - 1;
 
-    for (let j = low; j < high; j++) {
-      if (numbers[j] >= pivot) {
+    for (let j = low; j < high; j++) {      
+      if (this.compare(numbers[j], pivot)) {
         i++;
         [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
       }

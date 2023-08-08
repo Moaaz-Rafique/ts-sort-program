@@ -2,11 +2,11 @@ import fs from 'fs';
 import path from 'path';
 
 class FileUtils {
-    static readNumbersFromFile(filePath: string): number[] {
+    static readNumbersFromFile(filePath: string, delimiter: string): number[] {
         try {
 
             const data = fs.readFileSync(path.join(__dirname, "./../"+filePath), "utf-8");
-            const numbers = data.split(', ').map(Number).filter(e => e);
+            const numbers = data.split(delimiter).map(Number).filter(e => e);
             return numbers;
         } catch (error) {
             console.error('Error reading input file:', error);

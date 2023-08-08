@@ -1,5 +1,9 @@
 abstract class SortingAlgorithm {
-    abstract sort(numbers: number[]): number[];
+  protected order: string;
+  constructor(order: string) {
+    this.order = order;
   }
-  
-  export default SortingAlgorithm;
+  abstract sort(numbers: number[]): number[];
+}
+
+export default SortingAlgorithm;
