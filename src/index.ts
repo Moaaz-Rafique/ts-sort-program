@@ -17,7 +17,6 @@ function main(): void {
   const sortedNumbers = sortingAlgorithm.sort(numberList.getNumbers());
   
   // Write sorted numbers to output file
-  // numberList.sortDescending()
   FileUtils.writeNumbersToFile(outputFilePath, sortedNumbers);
   
   console.log('Numbers sorted and written to output file.');

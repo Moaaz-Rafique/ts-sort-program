@@ -3,7 +3,7 @@ import SortingAlgorithm from './SortingAlgorithm';
 class QuickSort extends SortingAlgorithm {
   sort(numbers: number[]): number[] {
     this.quickSort(numbers, 0, numbers.length - 1);
-    return numbers
+    return numbers;
   }
 
   private quickSort(numbers: number[], low: number, high: number): void {
@@ -19,7 +19,7 @@ class QuickSort extends SortingAlgorithm {
     let i = low - 1;
 
     for (let j = low; j < high; j++) {
-      if (numbers[j] <= pivot) {
+      if (numbers[j] >= pivot) {
         i++;
         [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
       }

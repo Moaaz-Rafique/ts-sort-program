@@ -9,10 +9,6 @@ class NumberList {
     getNumbers(): number[] {
       return this.numbers.slice(); // Return a copy of the array
     }
-  
-    sortDescending(): void {
-      this.numbers.sort((a, b) =>  a - b);
-    }
   }
   
   export default NumberList;
