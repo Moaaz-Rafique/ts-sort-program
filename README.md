@@ -26,4 +26,4 @@ This TypeScript program reads a list of numbers from an input file, sorts them i
 
 ## Example:
 ```bash
-yarn start --input=input.txt --output=output.txt --order=ascending --algorithm=mergesort --delimiter=,
+yarn start --input=input.txt --output=output.txt --order=ascending --algorithm=mergesort --delimiter=", "
